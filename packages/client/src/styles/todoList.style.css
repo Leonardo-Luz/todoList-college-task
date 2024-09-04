@@ -1,0 +1,30 @@
+.todoContainer{
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.createTodo{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+.todoContainer hr{
+    width: 100%;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}

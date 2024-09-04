@@ -1,0 +1,12 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd packages/server && npm run dev",
+    "client": "cd packages/client && npm run dev"
+  },
+  "author": "Leonardo Luz",
+  "license": "ISC"
+}
