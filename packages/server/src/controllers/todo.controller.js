@@ -5,7 +5,7 @@ const todos = [];
 const getTodoHandler = (req, res) => {
     const { id } = req.params;
 
-    const response = todos.find( todo => todo.id == id);
+    const response = todos.find( todo => todo.id == id );
 
     if(response)
         res.status(200).json(response);
@@ -37,12 +37,17 @@ const createTodoHandler = (req , res) => {
 const deleteTodoHandler = (req, res) => {
     const { id } = req.params;
 
-    const response = todos.find( todo => todo.id == id);
+    const response = todos.find( (todo, index) => {
+        if(todo.id == id)
+        return index;
+    } );
 
     if(!response)
         return res.status(404).json({message: "Todo not found!"});
 
-    todos = todos.filter( todo => todo != response);
+    todos.splice(response, 1);
+
+    // todos = todos.filter( todo => todo != response);
 
     res.status(200).json({
         message: "Todo deleted succefully",
@@ -53,16 +58,16 @@ const deleteTodoHandler = (req, res) => {
 const checkHandler = (req, res) => {
     const { id } = req.params;
 
-    const response = todos.find( todo => todo.id == id);
+    const response = todos.find( todo => todo.id == id ? todo.checked = !todo.checked : false);
 
     if(!response)
         return res.status(404).json({message: "Todo not found!"});
 
-    todos = todos.map( todo => {
-        todo.id == id ? todo.checked = !todo.checked : false
+    // todos = todos.map( todo => {
+    //     todo.id == id ? todo.checked = !todo.checked : false
 
-        return todo;
-    })
+    //     return todo;
+    // })
 
     res.status(200).json({
         message: "Todo succefully updated!"
